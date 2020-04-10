@@ -1,0 +1,28 @@
+body {
+    background-color: #FFFFDE;
+    color: #5A0000;
+    font-family: sans-serif;
+}
+.fullwidth {
+    width: 100%;
+}
+
+nav li {
+    display: inline;
+}
+
+nav li a:hover {
+    color: #0e0bff;
+}
+
+ul{
+    padding: 0;
+    margin: 0;
+}
+
+input{
+    display: block;
+    margin-top: 0.2em;
+    margin-bottom: 1em;
+    font-size: 1.1em;
+}
