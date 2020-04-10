@@ -1,0 +1,12 @@
+<head th:fragment="head(title)" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <title th:text="${title}">Title</title>
+    <link th:href="@{/images/bierhuis.ico}" rel="icon" type="image/x-icon">
+    <link th:href="@{/css/bierhuis.ico}" rel="stylesheet">
+</head>
+<nav th:fragment="menu" xmlns:th="http://www.thymeleaf.org">
+    <ul>
+        <li th:href="@{/}">Welcome</li>
+    </ul>
+
+</nav>
