@@ -8,5 +8,15 @@
         select count(*) from Bier b
     </query>
 </named-query>
+    <named-query name="Brouwer.findAllBrouwers">
+        <query>
+            select b from Brouwer b order by b.naam
+        </query>
+    </named-query>
+    <named-query name="Bier.findAllBierByBrouwerId">
+        <query>
+            select b from Bier b where brouwer.id=:id
+        </query>
+    </named-query>
 
 </entity-mappings>

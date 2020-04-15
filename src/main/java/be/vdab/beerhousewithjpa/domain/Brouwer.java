@@ -20,15 +20,14 @@ public class Brouwer {
 
     private BigDecimal omzet;
 
-    @OneToMany(mappedBy = "brouwer", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "brouwer")
     @OrderBy("naam, prijs")
     private Set<Bier> biers;
 
     protected Brouwer() {
     }
 
-    public Brouwer(long id, String naam, Adres adres, BigDecimal omzet) {
-        this.id = id;
+    public Brouwer(String naam, Adres adres, BigDecimal omzet) {
         this.naam = naam;
         this.adres = adres;
         this.omzet = omzet;
@@ -67,4 +66,18 @@ public class Brouwer {
         return toegevoegd;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Brouwer)) return false;
+
+        Brouwer brouwer = (Brouwer) o;
+
+        return naam != null ? naam.equals(brouwer.naam) : brouwer.naam == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return naam != null ? naam.hashCode() : 0;
+    }
 }

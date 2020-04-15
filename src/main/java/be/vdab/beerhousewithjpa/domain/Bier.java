@@ -79,4 +79,19 @@ public class Bier {
     public BigDecimal getAlcohol() {
         return alcohol;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Bier)) return false;
+
+        Bier bier = (Bier) o;
+
+        return naam != null ? naam.equals(bier.naam) : bier.naam == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return naam != null ? naam.hashCode() : 0;
+    }
 }

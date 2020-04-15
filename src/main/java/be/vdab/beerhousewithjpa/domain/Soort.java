@@ -11,11 +11,13 @@ public class Soort {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String naam;
 
     @OneToMany(mappedBy = "soort", cascade = CascadeType.REMOVE)
     @OrderBy("naam, prijs")
     private Set<Bier> bierSet;
+
 
     protected Soort() {
     }
