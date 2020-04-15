@@ -57,4 +57,9 @@ class JpaBierRepositoryTest extends AbstractTransactionalJUnit4SpringContextTest
 //        assertThat(repository.findAllBierByBrouwerId(id)).extracting(bier1 -> bier1.getNaam()).isEqualTo("test");
         assertThat(repository.findAllBierByBrouwerId(id)).hasSize(super.countRowsInTableWhere(BIEREN, "brouwerid="+id));
     }
+
+    @Test
+    void findById() {
+        assertThat(repository.findById(idFromTheTestBier()).get().getNaam()).isEqualTo("test");
+    }
 }

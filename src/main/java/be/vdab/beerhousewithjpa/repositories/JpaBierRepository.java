@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class JpaBierRepository implements BierRepository {
@@ -27,5 +28,10 @@ public class JpaBierRepository implements BierRepository {
         return manager.createNamedQuery("Bier.findAllBierByBrouwerId",Bier.class)
                 .setParameter("id", id)
                 .getResultList();
+    }
+
+    @Override
+    public Optional<Bier> findById(long id) {
+        return Optional.ofNullable(manager.find(Bier.class, id));
     }
 }

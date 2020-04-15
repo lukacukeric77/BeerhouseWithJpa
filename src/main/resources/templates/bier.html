@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title='Bier Details')"></head>
+<body th:object="${bier}">
+<nav th:replace="fragments::menu"></nav>
+
+<h1 th:text="*{naam}"></h1>
+<h3>Alcohol</h3>
+<p th:text="*{alcohol}"></p>
+<h3>Price</h3>
+<p th:text="*{prijs}"></p>
+<h3>Number of items</h3>
+<form method="post" th:action="@{/bier/form/{bierid} (bierid=${bier.id})}" th:object="${itemsForm}">
+<span th:errors="*{items}"></span>
+<input th:field="*{items}" type="number" required min="1">
+    <button>Add</button>
+</form>
+</body>
+</html>

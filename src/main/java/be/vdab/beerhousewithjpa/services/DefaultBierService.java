@@ -5,6 +5,7 @@ import be.vdab.beerhousewithjpa.repositories.BierRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DefaultBierService implements BierService {
@@ -23,5 +24,10 @@ public class DefaultBierService implements BierService {
     @Override
     public List<Bier> findAllBierByBrouwerId(long id) {
         return repository.findAllBierByBrouwerId(id);
+    }
+
+    @Override
+    public Optional<Bier> findById(long id) {
+        return repository.findById(id);
     }
 }
