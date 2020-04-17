@@ -31,20 +31,26 @@ class BierController {
     @GetMapping("{bierid}")
     public ModelAndView detailsOfBiers(@PathVariable long bierid) {
         mandjeIdOfBier = bierid;
-        ModelAndView modelAndView = new ModelAndView("bier", "bier", bierService.findById(bierid).get());
+        ModelAndView modelAndView = bierExtraction(bierid);
         modelAndView.addObject(new ItemsForm(null));
         return modelAndView;
     }
 
     @PostMapping("/form/{bierid}")
-    public ModelAndView fillingTheBasket(@PathVariable long bierid, Errors errors, @Valid ItemsForm itemsForm) {
+    public ModelAndView fillingTheBasket(@Valid ItemsForm itemsForm, Errors errors, @PathVariable long bierid) {
         if (errors.hasErrors()) {
-            return new ModelAndView("bier", "bier", bierService.findById(bierid).get());
+            return bierExtraction(bierid);
         }
         basket.fillIn(mandjeIdOfBier, itemsForm.getItems());
         return new ModelAndView("redirect:/mandje");
     }
 
+    private ModelAndView bierExtraction(long bierid){
+        ModelAndView modelAndView = new ModelAndView("bier");
+        Optional<Bier> optionalBier = bierService.findById(bierid);
+        optionalBier.ifPresent(bier -> modelAndView.addObject("bier", bier));
+        return modelAndView;
+    }
 
 }
 

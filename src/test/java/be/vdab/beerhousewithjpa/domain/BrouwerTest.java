@@ -17,7 +17,7 @@ class BrouwerTest {
     void setUp() {
         brouwer = new Brouwer("testBrouwer", new Adres("street", "housenr", 1000, "comunity"), BigDecimal.TEN);
         soort = new Soort("testSoort");
-        bier = new Bier("testBier", BigDecimal.ONE, BigDecimal.ONE, 10, soort, brouwer);
+        bier = new Bier("testBier", brouwer, soort, BigDecimal.ONE, BigDecimal.ONE, 10);
     }
 
     @Test

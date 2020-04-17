@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title='Mandje')"></head>
+<body>
+<nav th:replace="fragments::menu"></nav>
+
+<h1 th:if="${biersWithItems}!= null">Your Basket</h1>
+<table th:if="${biersWithItems}!=null">
+    <tr>
+        <th>Beer</th>
+        <th>Price</th>
+        <th>Items</th>
+        <th>To pay</th>
+    </tr>
+    <tr th:each="entry:${biersWithItems}">
+        <td th:text="${entry.key.naam}"></td>
+        <td style="text-align: right"  th:text="|${entry.key.prijs} &euro;|"></td>
+        <td style="text-align: center" th:text="${entry.value}"></td>
+        <td style="text-align: right" th:text="${entry.key.prijs} * ${entry.value}"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td style="text-align: center; font-weight: bold" th:text="${#aggregates.sum(biersWithItems.![value])}"></td>
+        <td style="text-align: right; font-weight: bold" th:text="${#aggregates.sum(biersWithItems.![key.prijs * value])}"></td>
+    </tr>
+</table>
+
+<h2>Order form</h2>
+
+<form th:action="@{/mandje/form}" method="post" th:object="${bestelbon}">
+    <label>Name: <span th:errors="*{naam}"></span>
+        <input th:field="*{naam}" autofocus required>
+    </label>
+    <label>Street: <span th:errors="*{adres.straat}"></span>
+        <input th:field="*{adres.straat}" required>
+    </label>
+    <label>Number: <span th:errors="*{adres.huisNr}"></span>
+        <input th:field="*{adres.huisNr}" required>
+    </label>
+    <label>Postcode: <span th:errors="*{adres.postcode}"></span>
+        <input th:field="*{adres.postcode}" type=number required min="1000" max="9999">
+    </label>
+    <label>Community: <span th:errors="*{adres.gemeente}"></span>
+        <input th:field="*{adres.gemeente}" required>
+    </label>
+    <button>Confirm your order</button>
+</form>
+</body>
+</html>

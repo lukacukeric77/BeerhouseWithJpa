@@ -3,8 +3,6 @@ package be.vdab.beerhousewithjpa.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.print.Doc;
-
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.*;
@@ -24,9 +22,9 @@ class BierTest {
         brouwer1 = new Brouwer("testBrouwer", new Adres("street", "number", 1000, "community"), BigDecimal.TEN);
         soort1 = new Soort("soortTest");
         soort2 = new Soort("soortTest2");
-        bier1 = new Bier("testBier", BigDecimal.ONE, BigDecimal.ONE, 10, soort1, brouwer1);
-        bier2 = new Bier("testBier2", BigDecimal.ONE, BigDecimal.ONE, 10, soort2, brouwer1);
-        againBier1 = new Bier("testBier", BigDecimal.ONE, BigDecimal.ONE, 10, soort1, brouwer1);
+        bier1 = new Bier("testBier", brouwer1, soort1, BigDecimal.ONE, BigDecimal.ONE, 10);
+        bier2 = new Bier("testBier2", brouwer1, soort2, BigDecimal.ONE, BigDecimal.ONE, 10);
+        againBier1 = new Bier("testBier", brouwer1, soort1, BigDecimal.ONE, BigDecimal.ONE, 10);
     }
 
     @Test

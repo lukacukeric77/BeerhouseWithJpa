@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 @DataJpaTest
@@ -39,7 +38,7 @@ class JpaBierRepositoryTest extends AbstractTransactionalJUnit4SpringContextTest
                 new Adres("straat", "huisNr", 1000, "gemeente"),
                 BigDecimal.TEN);
         soort = new Soort("soortTest");
-        bier = new Bier("bierTest", BigDecimal.ONE, BigDecimal.ONE, 10, soort, brouwer);
+        bier = new Bier("bierTest", brouwer, soort, BigDecimal.ONE, BigDecimal.ONE, 10);
     }
 
     private long idFromTheTestBier() {

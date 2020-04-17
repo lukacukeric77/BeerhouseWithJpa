@@ -1,15 +1,24 @@
 package be.vdab.beerhousewithjpa.domain;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 @Embeddable
 @Access(AccessType.FIELD)
 public class Adres {
+    @NotBlank
     private String straat;
+    @NotBlank
     private String huisNr;
+    @NotNull @Positive @Range(min = 1000, max = 9999)
     private int postcode;
+    @NotBlank
     private String gemeente;
 
     protected Adres() {

@@ -29,7 +29,7 @@ public class Bier {
     protected Bier() {
     }
 
-    public Bier(String naam, BigDecimal prijs, BigDecimal alcohol, long besteld, Soort soort, Brouwer brouwer) {
+    public Bier(String naam, Brouwer brouwer, Soort soort, BigDecimal alcohol, BigDecimal prijs, long besteld) {
         this.naam = naam;
         this.prijs = prijs;
         this.besteld = besteld;

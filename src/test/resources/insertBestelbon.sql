@@ -1,0 +1,1 @@
+insert into bestelbonnen(naam, straat, huisNr, postcode, gemeente) VALUES ('bestelbonTest', 'street', 'houseNumber', 1000, 'community');
