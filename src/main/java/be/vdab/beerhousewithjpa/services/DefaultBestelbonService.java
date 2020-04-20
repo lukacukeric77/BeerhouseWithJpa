@@ -3,8 +3,7 @@ package be.vdab.beerhousewithjpa.services;
 import be.vdab.beerhousewithjpa.domain.Bestelbon;
 import be.vdab.beerhousewithjpa.repositories.BestelbonRepository;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class DefaultBestelbonService implements BestelbonService{
