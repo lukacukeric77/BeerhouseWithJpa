@@ -46,4 +46,20 @@ class BierTest {
     void twoSameObjectsHaveSameHashCode() {
         assertThat(bier1).hasSameHashCodeAs(againBier1);
     }
+
+    @Test
+    void addToBesteld() {
+        bier1.addToBesteld(10);
+        assertThat(bier1.getBesteld()).isEqualByComparingTo(20L);
+    }
+
+    @Test
+    void addToBesteldZeroThrowsExcept() {
+        assertThatIllegalArgumentException().isThrownBy( ()-> bier1.addToBesteld(0));
+    }
+
+    @Test
+    void addToBesteldWithNegativeNumbersThrowsExcept() {
+        assertThatIllegalArgumentException().isThrownBy( ()-> bier1.addToBesteld(-1));
+    }
 }

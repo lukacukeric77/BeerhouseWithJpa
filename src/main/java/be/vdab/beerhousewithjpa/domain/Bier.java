@@ -96,7 +96,7 @@ public class Bier {
     }
 
     public void addToBesteld(long ammount) {
-        if (ammount == 0) {
+        if (ammount <= 0) {
             throw new IllegalArgumentException();
         } else {
             this.besteld = besteld + ammount;
