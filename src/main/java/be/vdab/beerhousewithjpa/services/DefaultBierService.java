@@ -4,6 +4,7 @@ import be.vdab.beerhousewithjpa.domain.Bier;
 import be.vdab.beerhousewithjpa.exceptions.BierNotFoundException;
 import be.vdab.beerhousewithjpa.repositories.BierRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,17 +18,17 @@ public class DefaultBierService implements BierService {
         this.repository = repository;
     }
 
-    @Override
+    @Override @Transactional(readOnly = true)
     public long findAantalBieren() {
         return repository.findAantalBieren();
     }
 
-    @Override
+    @Override @Transactional(readOnly = true)
     public List<Bier> findAllBierByBrouwerId(long id) {
         return repository.findAllBierByBrouwerId(id);
     }
 
-    @Override
+    @Override @Transactional(readOnly = true)
     public Optional<Bier> findById(long id) {
         return repository.findById(id);
     }
