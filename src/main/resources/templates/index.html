@@ -4,10 +4,13 @@
 <body>
 <nav th:replace="fragments::menu"></nav>
 
+<h1 th:if="${param.bestelbonID}!=null">Thanks, great! The ID of your bestelbon is <span th:text="${param.bestelbonID}"></span> </h1>
+
+<div th:if="${param.bestelbonID}==null">
 <h1>Welcome in the house of Belgian beers!</h1>
 <img th:src="@{/images/bierhuis.jpg}" alt="Beer image is missing">
 <h3>We have momentary <!--/*@thymesVar id="index" type="be.vdab.beerhousewithjpa.controllers.IndexController"*/-->
 <span th:text="${index}"></span> beers.</h3>
-
+</div>
 </body>
 </html>

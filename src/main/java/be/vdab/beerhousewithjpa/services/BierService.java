@@ -9,4 +9,5 @@ public interface BierService {
     long findAantalBieren();
     List<Bier> findAllBierByBrouwerId(long id);
     Optional<Bier> findById(long id);
+    void addToBesteld(long id, long ammount);
 }

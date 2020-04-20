@@ -8,6 +8,8 @@
     <ul>
         <li><a th:href="@{/}">Welcome</a></li>
         <li><a th:href="@{/brouwers}">Brouwers</a></li>
+        <!--/*@thymesVar id="basket" type="be.vdab.beerhousewithjpa.sessions.Basket"*/-->
+        <li th:if="${basket.isFilled()}"><a th:href="@{/mandje}">Basket</a></li>
     </ul>
 
 </nav>

@@ -21,7 +21,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("mandje")
@@ -30,7 +29,7 @@ class MandjeController {
     private final Basket basket;
     private final BierService bierService;
     private final BestelbonService bestelbonService;
-    private Set<Bestelbonlijn> bestelbonlijnSet = new LinkedHashSet<>();
+    private Set<Bestelbonlijn> bestelbonlijnSet;
 
 
     public MandjeController(Basket basket, BierService bierService, BestelbonService bestelbonService) {
@@ -47,14 +46,12 @@ class MandjeController {
     }
 
 
-
     @PostMapping("/form")
     public ModelAndView creationOfBestelbonAndBestelbonlijn(@Valid Bestelbon bestelbon,
                                                             BindingResult bindingResult,
                                                             Errors errors,
                                                             HttpSession session,
                                                             RedirectAttributes attributes){
-
 
         if (errors.hasErrors()){
             return showingBasketDetails();
@@ -63,21 +60,14 @@ class MandjeController {
         if (basket.isFilled()){
             for (Bestelbonlijn bestelbonlijn : bestelbonlijnSet){
             bestelbon.addBestelbonlijn(bestelbonlijn);
+            bierService.addToBesteld(bestelbonlijn.getBier().getId(), bestelbonlijn.getAantal());
             }
             bestelbonService.create(bestelbon);
-            return new ModelAndView("testPage", "testPage", bestelbon);
-
-
-//            session.invalidate();
-
-//            attributes.addAttribute("bestelBonID", idBestelBon);                             // fill attributes for transport; if this is not used, it will be null
-//            session.invalidate();                                                                       // drop the session, clean JSESSIONID cookie
-//            return new ModelAndView("redirect:/");
-
+            attributes.addAttribute("bestelbonID", bestelbon.getId());
+            session.invalidate();
+            return new ModelAndView("redirect:/");
         }
-
-        return null;
-
+        return new ModelAndView("redirect:/");
     }
 
     @InitBinder("bestelbon")
@@ -100,10 +90,6 @@ class MandjeController {
         }
         modelAndView.addObject("biersWithItems", biersWithItems);
         return modelAndView;
-
     }
-
-
-
 
 }

@@ -58,14 +58,5 @@ public class Bestelbonlijn {
         result = 31 * result + (prijs != null ? prijs.hashCode() : 0);
         return result;
     }
-
-
-    @Override
-    public String toString() {
-        return "Bestelbonlijn{" +
-                "bier=" + bier.getNaam() +
-                ", aantal=" + aantal +
-                ", prijs=" + prijs +
-                '}';
-    }
+    
 }

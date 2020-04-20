@@ -1,6 +1,7 @@
 package be.vdab.beerhousewithjpa.services;
 
 import be.vdab.beerhousewithjpa.domain.Bier;
+import be.vdab.beerhousewithjpa.exceptions.BierNotFoundException;
 import be.vdab.beerhousewithjpa.repositories.BierRepository;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,15 @@ public class DefaultBierService implements BierService {
     @Override
     public Optional<Bier> findById(long id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public void addToBesteld(long id, long ammount) {
+        Optional<Bier> optionalBier = repository.findById(id);
+        if (optionalBier.isPresent()){
+            optionalBier.get().addToBesteld(ammount);
+        } else {
+            throw new BierNotFoundException();
+        }
     }
 }

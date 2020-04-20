@@ -17,14 +17,14 @@ public class Adres {
     @NotBlank
     private String huisNr;
     @NotNull @Positive @Range(min = 1000, max = 9999)
-    private int postcode;
+    private Integer postcode;
     @NotBlank
     private String gemeente;
 
     protected Adres() {
     }
 
-    public Adres(String straat, String huisNr, int postcode, String gemeente) {
+    public Adres(String straat, String huisNr, Integer postcode, String gemeente) {
         this.straat = straat;
         this.huisNr = huisNr;
         this.postcode = postcode;
@@ -39,7 +39,7 @@ public class Adres {
         return huisNr;
     }
 
-    public int getPostcode() {
+    public Integer getPostcode() {
         return postcode;
     }
 

@@ -39,14 +39,14 @@ public class Bier {
     }
 
     public void setSoort(Soort soort) {
-        if (!soort.getBierSet().contains(this)){
+        if (!soort.getBierSet().contains(this)) {
             soort.add(this);
         }
         this.soort = soort;
     }
 
     public void setBrouwer(Brouwer brouwer) {
-        if (!brouwer.getBiers().contains(this)){
+        if (!brouwer.getBiers().contains(this)) {
             brouwer.add(this);
         }
         this.brouwer = brouwer;
@@ -94,4 +94,13 @@ public class Bier {
     public int hashCode() {
         return naam != null ? naam.hashCode() : 0;
     }
+
+    public void addToBesteld(long ammount) {
+        if (ammount == 0) {
+            throw new IllegalArgumentException();
+        } else {
+            this.besteld = besteld + ammount;
+        }
+    }
+
 }
