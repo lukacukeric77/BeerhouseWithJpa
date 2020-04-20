@@ -3,6 +3,7 @@ package be.vdab.beerhousewithjpa.services;
 import be.vdab.beerhousewithjpa.domain.Brouwer;
 import be.vdab.beerhousewithjpa.repositories.BrouwerRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class DefaultBreuwerService implements BrouwerService {
         this.repository = repository;
     }
 
-    @Override
+    @Override @Transactional(readOnly = true)
     public List<Brouwer> findAllBrouwers() {
         return repository.findAllBrouwers();
     }
