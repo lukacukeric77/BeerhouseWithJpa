@@ -5,13 +5,13 @@ import javax.validation.constraints.Positive;
 
 public class ItemsForm {
 
+    @NotNull @Positive
     private final Long items;
 
     public ItemsForm(Long items) {
         this.items = items;
     }
 
-    @NotNull @Positive
     public Long getItems() {
         return items;
     }
