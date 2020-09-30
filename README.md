@@ -8,7 +8,7 @@ You can then continue the purchase via menu or you can procede to reservation sc
 On reservation screen you input your data, and if everything is ok, system notifies you that reservation went ok.
 
 Technical description:
-- You need MySql database installed.
+- Java 8, Spring Framework, My Sql dtbs
 - Script for database called "beerhuis" is not inlcuded here to prevent further distribution. 
 If something changes in this area, I will announce it here. 
 - ORM mapping is done via JPA, although I have one more version of the same app that is done via JDBC
