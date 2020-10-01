@@ -1,5 +1,5 @@
-document.getElementsByName("aantal").oninvalid = function() {
-    this.setCustomValidity("Verplicht");
+document.getElementsByName("items").oninvalid = function() {
+    this.setCustomValidity("Obligated");
 };
 document.querySelector("form").onsubmit = function() {
   this.querySelector("button").disabled = true;
