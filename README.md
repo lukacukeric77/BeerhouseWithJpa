@@ -1,3 +1,6 @@
+<b>Beerhouse with JPA</b>
+
+Intention:
 This is a small app for online reservation of beer. It is here only to show sample of my coding.
 
 Description:
